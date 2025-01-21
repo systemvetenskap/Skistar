@@ -1,7 +1,11 @@
+using Skistar.Services;
+using Skistar.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IStatisticsService, FakeStatisticsService>();
 
 var app = builder.Build();
 
