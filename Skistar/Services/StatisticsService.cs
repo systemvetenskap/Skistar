@@ -15,6 +15,7 @@ namespace Skistar.Services
         public async Task<StatisticsViewModel> GetUserStatistics()
         {
             var genres = await _apiEngine.GetAsync<List<GenreDto>>("https://dsvkurs.miun.se/api/Genres", "key1");
+            var weathers = await _apiEngine.GetAsync<List<WeatherDto>>("https://localhost:7159/api/WeatherForecast");
             // hämta från api
             return null;
         }

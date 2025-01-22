@@ -1,0 +1,6 @@
+@SkistarApi_HostAddress = http://localhost:5014
+
+GET {{SkistarApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
