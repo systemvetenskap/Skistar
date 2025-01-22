@@ -12,9 +12,9 @@ namespace Skistar.Controllers
         {
             _statisticsService = statisticsService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var model = _statisticsService.GetUserStatistics();
+            var model = await _statisticsService.GetUserStatistics();
             return View(model);
         }
     }

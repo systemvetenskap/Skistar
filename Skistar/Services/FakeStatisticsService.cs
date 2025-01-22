@@ -3,7 +3,7 @@ using Skistar.ViewModels;
 
 namespace Skistar.Services
 {
-    public class FakeStatisticsService : IStatisticsService
+    public class FakeStatisticsService //: IStatisticsService
     {
         public StatisticsViewModel GetUserStatistics()
         {

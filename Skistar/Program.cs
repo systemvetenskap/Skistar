@@ -5,7 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IStatisticsService, FakeStatisticsService>();
+builder.Services.AddScoped<IStatisticsService, StatisticsService>();
+
+// api 
+builder.Services.AddHttpClient<ApiEngine>();
 
 var app = builder.Build();
 

@@ -4,5 +4,5 @@ namespace Skistar.Services.Interfaces;
 
 public interface IStatisticsService
 {
-    StatisticsViewModel GetUserStatistics();
+    Task<StatisticsViewModel> GetUserStatistics();
 }

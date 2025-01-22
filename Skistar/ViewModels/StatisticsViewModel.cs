@@ -4,5 +4,6 @@
     {
         public int TotalMeters { get; set; }
         public int TotalRides { get; set; }
+
     }
 }
