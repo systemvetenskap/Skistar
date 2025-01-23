@@ -11,8 +11,8 @@ using SkistarApi.Data;
 namespace SkistarApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250122143416_initial")]
-    partial class initial
+    [Migration("20250123100259_erik")]
+    partial class erik
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,26 @@ namespace SkistarApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("SkistarApi.Models.Lift", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Meters")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lifts");
+                });
 
             modelBuilder.Entity("SkistarApi.Models.Skier", b =>
                 {
