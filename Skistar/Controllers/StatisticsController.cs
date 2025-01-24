@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Skistar.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Skistar.Services.Interfaces;
-using Skistar.ViewModels;
 
 namespace Skistar.Controllers
 {
@@ -12,7 +11,14 @@ namespace Skistar.Controllers
         {
             _statisticsService = statisticsService;
         }
+        [Authorize]
         public async Task<IActionResult> Index()
+        {
+            var model = await _statisticsService.GetUserStatistics();
+            return View(model);
+        }
+
+        public async Task<IActionResult> Admin()
         {
             var model = await _statisticsService.GetUserStatistics();
             return View(model);
