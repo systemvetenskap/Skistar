@@ -1,0 +1,15 @@
+﻿@model Skistar.ViewModels.RoleViewModel
+
+<form asp-action="AddUserToRole" asp-controller="Account" method="post">
+    @Html.Hidden("userId", Model.UserId)
+    <label for="role">Role:</label>
+    @Html.TextBoxFor(m => m.Role)
+    <button type="submit" class="btn btn-primary">Add Role</button>
+</form>
+
+<form asp-action="RemoveUserFromRole" asp-controller="Account" method="post">
+    <input type="hidden" name="UserId" />
+    <label for="role">Role:</label>
+    <input type="text" id="role" name="role" />
+    <button type="submit" class="btn btn-danger">Remove Role</button>
+</form>

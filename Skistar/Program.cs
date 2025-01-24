@@ -29,6 +29,11 @@ builder.Services.AddScoped<IStatisticsService, StatisticsService>();
 builder.Services.AddHttpClient<ApiEngine>();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    await SeedRoles(roleManager);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -50,3 +55,15 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+static async Task SeedRoles(RoleManager<IdentityRole> roleManager)
+{
+    if (!await roleManager.RoleExistsAsync("admin"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("admin"));
+    }
+
+    if (!await roleManager.RoleExistsAsync("user"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("user"));
+    }
+}
