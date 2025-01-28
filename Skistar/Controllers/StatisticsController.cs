@@ -25,8 +25,8 @@ namespace Skistar.Controllers
             return View(model);
         }
 
-        // [Authorize(Roles = "admin")]
-        [Authorize]
+        [Authorize(Roles = "admin")]
+        //[Authorize]
         public async Task<IActionResult> Admin()
         {
             var user = await _userManager.GetUserAsync(User);
